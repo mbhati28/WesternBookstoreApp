@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd backend && nodemon server.js\" \"cd frontend && npm start\"",
-    "dev": "nodemon index.js"
+    "start": "concurrently \"cd backend && npm i -g nodemon && nodemon server.js\" \"cd frontend && npm i vite@4.1.0 && npm run dev\""
   },
   "author": "",
   "license": "ISC",
