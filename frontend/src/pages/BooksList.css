@@ -1,0 +1,31 @@
+.books-list-container {
+    display: flex;
+}
+
+.filter-column {
+    flex: 1; /* Adjust the width as needed */
+    padding: 20px;
+    border-right: 1px solid #ddd; /* Optional border */
+}
+
+.books-column {
+    flex: 3; /* Adjust the width as needed */
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Add responsive behavior if needed */
+@media (max-width: 768px) {
+    .books-list-container {
+        flex-direction: column;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
