@@ -5,6 +5,8 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+mongoose.connect("mongodb+srv://gagan:<password>@cluster0.svsii6u.mongodb.net/?retryWrites=true&w=majority");
+
 // mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 //     .then(() => console.log("MongoDB connected"))
 //     .catch(err => console.log(err));
@@ -12,5 +14,13 @@ app.use(express.json());
 // Routes
 // app.use('/api/books', require('./routes/books'));
 
-const PORT = process.env.PORT || 5555;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.use("/",(req,res)=>{
+//     res.status(200).json({name:"hu"})
+// })
+
+// const PORT = process.env.PORT || 5588;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(5581, () => {
+    console.log("Backend working");
+});
