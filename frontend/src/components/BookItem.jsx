@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 const BookItem = ({ book, onViewDetails, onAddToCart }) => {
+
+    const navigate = useNavigate();
+
+    const viewDetails = () => {
+        navigate(`/book/${book.id}`, { state: { book } });
+    };
   return (
     <div className="book-item">
       <img
@@ -15,10 +22,12 @@ const BookItem = ({ book, onViewDetails, onAddToCart }) => {
         <p>Published Date: {book.volumeInfo.publishedDate}</p>
       )}
 
-      <button onClick={() => onViewDetails(book)}>View Details</button>
+      <button onClick={viewDetails}>View Details</button>
       <button onClick={() => onAddToCart(book)}>Add to Cart</button>
     </div>
   );
 };
+
+
 
 export default BookItem;

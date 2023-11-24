@@ -14,6 +14,7 @@ const BooksList = () => {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyB48Lo0vxO_yQqHUshxjpTsiRqn4QUZCNw`
       );
+      console.log(response);
       setBooks(response.data.items || []);
     } catch (error) {
       console.error("Error fetching data:", error);

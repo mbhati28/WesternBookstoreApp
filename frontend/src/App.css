@@ -14,3 +14,7 @@ form button {
 form div {
     margin-top: 10px;
 }
+
+.book-details{
+    height: 100vh;
+}
