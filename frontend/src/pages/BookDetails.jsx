@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import "./BookDetails.css";
 
 const BookDetails = () => {
   const location = useLocation();
   console.log(location);
+  const [showFullDescription, setShowFullDescription] = useState(false);
   const book = location.state.book;
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   return (
     <div className="book-details">
       <div className="col-lg-3">
@@ -19,20 +25,23 @@ const BookDetails = () => {
         <h2>{book.volumeInfo.title}</h2>
         {book.volumeInfo.authors && (
           <p>
-            <strong>Author:</strong> {book.volumeInfo.authors.join(", ")}
+            <strong></strong> {book.volumeInfo.authors.join(", ")}
           </p>
         )}
         {book.saleInfo && book.saleInfo.retailPrice && (
-          <p>
-            <strong>Price:</strong> {book.saleInfo.retailPrice.amount}{" "}
+          <p className="price">
+            ${book.saleInfo.retailPrice.amount}{" "}
             {book.saleInfo.retailPrice.currencyCode}
           </p>
         )}
         {book.volumeInfo.description && (
-          <p>
-            <strong>Description:</strong> {book.volumeInfo.description}
+          <p className={`description ${showFullDescription ? "expanded" : ""}`}>
+            {book.volumeInfo.description}
           </p>
         )}
+        <button onClick={toggleDescription}>
+          {showFullDescription ? "Show Less" : "Show More"}
+        </button>
       </div>
     </div>
   );

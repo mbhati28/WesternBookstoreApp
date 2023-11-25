@@ -8,6 +8,7 @@ import { CartProvider } from './context/CartContext';
 import CartComponent from '/src/components/CartComponent.jsx';
 import CartButton from '/src/components/CartButton.jsx';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CartPage from './pages/CartPage'; // Import the CartPage component
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
              <Route path="/" element={<Home />} />
              <Route path="/books" element={<BooksList />} />
              <Route path="/book/:id" element={<BookDetails />} />
+          <Route path="/cart" element={<CartPage />} />
              <Route path="/cart" element={<CartComponent />} />
            </Routes>
            <Footer />
