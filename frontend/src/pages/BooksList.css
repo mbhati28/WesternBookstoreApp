@@ -1,15 +1,16 @@
 .books-list-container {
     display: flex;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .filter-column {
-    flex: 1; /* Adjust the width as needed */
+    flex: 1; 
     padding: 20px;
-    border-right: 1px solid #ddd; /* Optional border */
 }
 
 .books-column {
-    flex: 3; /* Adjust the width as needed */
+    flex: 7; 
 }
 
 .books-grid {
@@ -19,7 +20,7 @@
     padding: 20px;
 }
 
-/* Add responsive behavior if needed */
+
 @media (max-width: 768px) {
     .books-list-container {
         flex-direction: column;

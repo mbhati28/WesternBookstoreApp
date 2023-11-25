@@ -18,3 +18,67 @@ form div {
 .book-details{
     height: 100vh;
 }
+
+.book-item .price {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+.image-container{
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+img{
+    max-height: 100%;
+}
+
+.book-title{
+    height: 25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.book-title h3{
+    font-size: large;
+}
+
+.book-info{
+    height: 15%;
+    padding-bottom: 180px;
+    text-align: center;
+}
+
+.button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Add this style to your BooksList.css or any relevant CSS file */
+.books-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add margin to separate it from the book grid */
+}
+  
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+  
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+}
+  
