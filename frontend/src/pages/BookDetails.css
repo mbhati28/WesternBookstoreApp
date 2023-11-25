@@ -1,0 +1,41 @@
+.book-details {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-details .col-lg-3 {
+    flex: 0 0 auto; /* Bootstrap's col-lg-3 class */
+    max-width: 25%; /* Bootstrap's col-lg-3 class */
+}
+
+.book-details img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px; /* Optional: for rounded corners */
+}
+
+.book-details .col-lg-10 {
+    flex: 0 0 auto; /* Bootstrap's col-lg-10 class */
+    max-width: 83.333333%; /* Bootstrap's col-lg-10 class */
+}
+
+.book-details h2 {
+    margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .book-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-details .col-lg-3,
+    .book-details .col-lg-10 {
+        max-width: 100%;
+    }
+}
