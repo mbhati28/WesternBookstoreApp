@@ -1,11 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from '../context/cartContext';
 
 const BookItem = ({ book, onViewDetails, onAddToCart }) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const viewDetails = () => {
     navigate(`/book/${book.id}`, { state: { book } });
+  };
+  const handleAddToCart = () => {
+    addToCart(book);
   };
 
   const priceInfo =
@@ -31,7 +36,7 @@ const BookItem = ({ book, onViewDetails, onAddToCart }) => {
       <div className="book-info">
         <button onClick={viewDetails}>View Details</button>
         <br />
-        <button onClick={() => onAddToCart(book)}>Add to Cart</button>
+        <button onClick={() => handleAddToCart(book)}>Add to Cart</button>
       </div>
     </div>
   );

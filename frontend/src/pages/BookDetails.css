@@ -7,6 +7,11 @@
     padding: 20px;
 }
 
+.price{
+    font-size: x-large;
+    font-weight: 600;
+}
+
 .book-details .col-lg-3 {
     flex: 0 0 auto; /* Bootstrap's col-lg-3 class */
     max-width: 25%; /* Bootstrap's col-lg-3 class */
@@ -39,3 +44,18 @@
         max-width: 100%;
     }
 }
+
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description.expanded {
+    display: block;
+    -webkit-line-clamp: none;
+    overflow: visible;
+}
+

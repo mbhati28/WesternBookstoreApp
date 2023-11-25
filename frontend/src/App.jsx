@@ -5,6 +5,7 @@ import BooksList from "./pages/BooksList";
 import React from "react";
 import BookDetails from "./pages/BookDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CartPage from './pages/CartPage'; // Import the CartPage component
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<BooksList />} />
           <Route path="/book/:id" element={<BookDetails />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer></Footer>
       </Router>
