@@ -1,0 +1,20 @@
+form {
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+form button {
+    padding: 5px 10px;
+}
+
+form div {
+    margin-top: 10px;
+}
+
+.book-details{
+    height: 100vh;
+}
