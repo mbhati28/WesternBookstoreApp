@@ -1,4 +1,3 @@
-// backend/routes/stripe.js
 const express = require('express');
 const router = express.Router();
 const stripe = require('stripe')('sk_test_51OFgAlBRD5NuqOJb6Cx8EVKq2SHCBbwWiSEcNhiic3bjJz38OfZ7LbLD8rLWAAFwMqzSRUcEW0FEV328OhqMWcpL00X1WdEjrS');
@@ -10,13 +9,15 @@ console.log("Received checkout request", req.body);
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: req.body.cartItems.map(item => {
+
+                const roundedPrice = (item.saleInfo.listPrice.amount * 100).toFixed(0);
                 return {
                     price_data: {
                         currency: 'cad',
                         product_data: {
-                            name: item.title,
+                            name: item.volumeInfo.title,
                         },
-                        unit_amount: item.price * 100,
+                        unit_amount: Number(roundedPrice),
                     },
                     adjustable_quantity: {
                         enabled: true,
@@ -25,9 +26,10 @@ console.log("Received checkout request", req.body);
                     quantity: item.quantity
                 };
             }),
+
             mode: 'payment',
-            success_url: `${req.headers.origin}/payment/success`,
-            cancel_url: `${req.headers.origin}/payment/canceled`,
+            success_url: `http://localhost:5173/payment/success`,
+            cancel_url: `http://localhost:5173/payment/canceled`,
 
         }
         );
