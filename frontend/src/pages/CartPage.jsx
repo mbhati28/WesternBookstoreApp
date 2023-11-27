@@ -1,29 +1,34 @@
-// src/pages/CartPage.js
 import React, { useEffect } from "react";
 import { useCart } from "../context/CartContext"; // Adjust the path based on your project structure
 import "./CartPage.css";
 import axios from "axios";
-import PaymentComponent from "../components/paymentcomponent.jsx";
 
 const CartPage = () => {
-  
-  const {cartItems, setCartItems, totalPrice, totalQuantities, setTotalPrice, setTotalQuantities, removeItemFromCart } = useCart();
-    /* eslint-disable */
-    useEffect(() => {
-        const storedCartData = localStorage.getItem('cartData');
-        const storedPrice = localStorage.getItem('price');
-        const storedQuantity = localStorage.getItem('quantity');
+  const {
+    cartItems,
+    setCartItems,
+    totalPrice,
+    totalQuantities,
+    setTotalPrice,
+    setTotalQuantities,
+    removeItemFromCart,
+  } = useCart();
+  /* eslint-disable */
+  useEffect(() => {
+    const storedCartData = localStorage.getItem("cartData");
+    const storedPrice = localStorage.getItem("price");
+    const storedQuantity = localStorage.getItem("quantity");
 
-        if (storedCartData) {
-            setCartItems(JSON.parse(storedCartData));
-        }
-        if (storedPrice) {
-            setTotalPrice(parseFloat(storedPrice));
-        }
-        if (storedQuantity) {
-            setTotalQuantities(parseInt(storedQuantity));
-        }
-    }, [])
+    if (storedCartData) {
+      setCartItems(JSON.parse(storedCartData));
+    }
+    if (storedPrice) {
+      setTotalPrice(parseFloat(storedPrice));
+    }
+    if (storedQuantity) {
+      setTotalQuantities(parseInt(storedQuantity));
+    }
+  }, []);
 
   console.log(cartItems);
 
@@ -56,18 +61,15 @@ const CartPage = () => {
           />
           <div className="cart-item-info">
             <h3>{item.volumeInfo.title}</h3>
-            <p>
-              Price: {item.saleInfo.listPrice.amount}
-            </p>
+            <p>Price: {item.saleInfo.listPrice.amount}</p>
             <div>x{item.quantity}</div>
-            {/* Add more item details if needed */}
             <button onClick={() => removeItemFromCart(item.id)}>
               Remove from cart
             </button>
           </div>
         </div>
       ))}
-      <button onClick={(handlePayment)}>Proceed to Checkout</button>
+      <button onClick={handlePayment}>Proceed to Checkout</button>
     </div>
   );
 };

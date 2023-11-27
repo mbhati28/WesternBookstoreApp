@@ -18,6 +18,8 @@ const BookItem = ({ book, onViewDetails }) => {
     book.saleInfo && book.saleInfo.listPrice
       ? `${book.saleInfo.listPrice.amount} ${book.saleInfo.listPrice.currencyCode}`
       : "Not for sale";
+    
+      const isPriceAvailable = book.saleInfo && book.saleInfo.listPrice;
 
   return (
     <div className="book-item">
@@ -35,9 +37,9 @@ const BookItem = ({ book, onViewDetails }) => {
         <p className="price">{priceInfo}</p>
       </div>
       <div className="book-info">
-        <button onClick={viewDetails}>View Details</button>
+        <button onClick={viewDetails} >View Details</button>
         <br />
-        <button onClick={handleAddToCart}>Add to Cart</button> {/* Use the handleAddToCart function */}
+        <button onClick={handleAddToCart} disabled={!isPriceAvailable}>Add to Cart</button> {/* Use the handleAddToCart function */}
       </div>
     </div>
   );
