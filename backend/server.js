@@ -1,11 +1,26 @@
-const express = require('express');
-const mongoose = require('mongoose');
-require('dotenv').config();
-
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const app = express();
-app.use(express.json());
+const userRoute = require("./routes/user");
+const authRoute = require("./routes/auth");
+const cors = require("cors");
+// require("dotenv").config();
 
-mongoose.connect("mongodb+srv://gagan:<password>@cluster0.svsii6u.mongodb.net/?retryWrites=true&w=majority");
+dotenv.config();
+app.use(cors());
+
+const uri = process.env.MONGO_URL;
+const pass = process.env.PASS_SEC;
+console.log(pass);
+mongoose
+  .connect(
+    "mongodb+srv://gagan:gagan@cluster0.svsii6u.mongodb.net/WesternBookStore?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("Database connection successful"))
+  .catch((err) => {
+    console.log("Error is ", err);
+  });
 
 // mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 //     .then(() => console.log("MongoDB connected"))
@@ -21,6 +36,14 @@ mongoose.connect("mongodb+srv://gagan:<password>@cluster0.svsii6u.mongodb.net/?r
 // const PORT = process.env.PORT || 5588;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.listen(5581, () => {
-    console.log("Backend working");
+app.listen(process.env.PORT || 5151, () => {
+  console.log("Backend working");
 });
+
+app.get("/api/test", () => {
+  console.log("Helloooo");
+});
+
+app.use(express.json());
+app.use("/api/user", userRoute);
+app.use("/api/auth", authRoute);
