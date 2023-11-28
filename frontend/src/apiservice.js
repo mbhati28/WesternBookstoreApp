@@ -11,3 +11,7 @@ export const loginUser = (userData) => {
   console.log("loginUser", userData);
   return axios.post(`${API_BASE_URL}/auth/login`, userData);
 };
+
+export const googleLogin = (tokenData) => {
+  return axios.post(`${API_BASE_URL}/auth/google-login`, tokenData);
+};
