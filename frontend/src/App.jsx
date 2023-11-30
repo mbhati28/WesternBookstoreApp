@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -21,35 +20,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<BooksList />} />
           <Route path="/book/:id" element={<BookDetails />} />
-          {/* <Route path="/cart" element={<CartPage />} /> */}
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment/success" element={<Success />} />
           <Route path="/payment/canceled" element={<Cancel />} />
         </Routes>
         <Footer />
       </Router>
-=======
-import React, { useState } from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-import { Login } from "./Login";
-import { Signup } from "./Signup";
-
-function App() {
-  const [currentForm, setCurrentForm] = useState("login");
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  };
-
-  return (
-    <div className="App">
-      {currentForm === "login" ? (
-        <Login onFormSwitch={toggleForm} />
-      ) : (
-        <Signup onFormSwitch={toggleForm} />
-      )}
->>>>>>> Google-login
     </div>
   );
 }
