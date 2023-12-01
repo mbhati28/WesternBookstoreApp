@@ -1,16 +1,28 @@
-const router = require("express").Router();
+const router = require('express').Router();
+const Cart = require('../models/Cart');
+const Order = require('../models/Order');
 
-// router.get("/usertest", (req, res) => {
-//   res.send("user test");
-// });
+// Add a book to the user's cart
+router.post('/cart/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const { bookId, quantity } = req.body;
 
-// router.post("/userposttest", (req, res) => {
-//   const username = req.body.username;
-//   console.log(username);
-//   res.send("Hi " + username);
-// });
+    try {
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            // Create a new cart if not exist
+            cart = new Cart({ userId, books: [{ bookId, quantity }] });
+        } else {
+            // Add new book to existing cart
+            cart.books.push({ bookId, quantity });
+        }
+        const updatedCart = await cart.save();
+        res.status(200).json(updatedCart);
+    } catch (error) {
+        res.status(500).json({ message: "Error adding to cart", error });
+    }
+});
 
-// lh:5151/api/user/usertest
 
-// router.post("userposttest", ())
+
 module.exports = router;
