@@ -23,6 +23,25 @@ router.post('/cart/:userId', async (req, res) => {
     }
 });
 
+router.delete('/cart/:userId/:bookId', async (req, res) => {
+    const { userId, bookId } = req.params;
+
+    try {
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+
+        // Filter out the book to be removed
+        cart.books = cart.books.filter(book => book.bookId !== bookId);
+
+        const updatedCart = await cart.save();
+        res.status(200).json(updatedCart);
+    } catch (error) {
+        res.status(500).json({ message: "Error removing book from cart", error });
+    }
+});
+
 
 
 module.exports = router;
