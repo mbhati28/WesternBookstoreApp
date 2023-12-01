@@ -42,6 +42,16 @@ router.delete('/cart/:userId/:bookId', async (req, res) => {
     }
 });
 
+// Get the user's cart
+router.get('/cart/:userId', async (req, res) => {
+    try {
+        const cart = await Cart.findOne({ userId: req.params.userId });
+        res.status(200).json(cart);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching cart", error });
+    }
+});
+
 
 
 module.exports = router;
