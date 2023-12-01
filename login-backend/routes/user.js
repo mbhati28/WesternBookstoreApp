@@ -52,6 +52,19 @@ router.get('/cart/:userId', async (req, res) => {
     }
 });
 
+// Create an order for the user
+router.post('/order/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const { products, amount, address } = req.body;
+
+    try {
+        const order = new Order({ userId, products, amount, address });
+        const savedOrder = await order.save();
+        res.status(200).json(savedOrder);
+    } catch (error) {
+        res.status(500).json({ message: "Error creating order", error });
+    }
+});
 
 
 module.exports = router;
