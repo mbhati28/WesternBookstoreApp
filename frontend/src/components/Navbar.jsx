@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const { authData, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login"); // Redirect to login page after logout
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="">
@@ -32,12 +41,21 @@ const Navbar = () => {
           <Link className="nav-item nav-link" to="/order">
             Order
           </Link>
-          <Link className="nav-item nav-link" to="/login">
-            Login
-          </Link>
-          <Link className="nav-item nav-link" to="/signup">
-            Sign Up
-          </Link>
+          {!authData && (
+            <>
+              <Link className="nav-item nav-link" to="/login">
+                Login
+              </Link>
+              <Link className="nav-item nav-link" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          )}
+          {authData && (
+            <Link className="nav-item nav-link" onClick={handleLogout}>
+              Logout
+            </Link> // Logout button
+          )}
         </div>
       </div>
     </nav>

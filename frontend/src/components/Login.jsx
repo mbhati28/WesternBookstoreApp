@@ -1,20 +1,28 @@
-import React, { useState } from "react";
-import axios from "axios"; // Ensure axios is imported for HTTP requests
-import { loginUser } from "./apiservice";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from "../services/api";
+import { AuthContext } from '../context/AuthContext';
 import { GoogleLogin } from "react-google-login";
 
-export const Login = (props) => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPass] = useState("");
+  const [error, setError] = useState('');
+  const { setUserAuthInfo } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // Handle submission of the normal login form
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Reset error message
     try {
-      const response = await loginUser({ email, password: pass });
+      const response = await login(email, password);
+      setUserAuthInfo(response.data);
+      navigate('/');
       console.log("Login successful:", response.data);
       // Handle login success (e.g., store token, redirect user)
-    } catch (error) {
+
+    } catch (err) {
       console.error("Login error:", error.response?.data || error.message);
       // Handle login errors (e.g., show error message)
     }
@@ -46,6 +54,7 @@ export const Login = (props) => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
           type="email"
           placeholder="youremail@gmail.com"
           id="email"
@@ -53,8 +62,9 @@ export const Login = (props) => {
         />
         <label htmlFor="password">Password</label>
         <input
-          value={pass}
+          value={password}
           onChange={(e) => setPass(e.target.value)}
+          required
           type="password"
           placeholder="********"
           id="password"
@@ -75,10 +85,12 @@ export const Login = (props) => {
 
       <button
         className="link-btn"
-        onClick={() => props.onFormSwitch("register")}
+        onClick={() => navigate('/signup')}
       >
         Don't have an account? Register here.
       </button>
     </div>
   );
 };
+
+export default Login;

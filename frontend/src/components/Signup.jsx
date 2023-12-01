@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios"; // Import axios for making HTTP requests
-import { registerUser } from "./apiService";
+import { useNavigate } from 'react-router-dom';
+import { register } from "../services/api";
 import { GoogleLogin } from "react-google-login";
-import { googleLogin } from "./apiservice";
+// import { googleLogin } from "../services/api";
 
-export const Signup = (props) => {
+const Signup = (props) => {
   // State for the normal sign-up form
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPass] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Handle normal sign-up form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Reset error message
     try {
-      const response = await registerUser({
-        username: name,
-        email,
-        password: pass,
-      });
+      const response = await register(name,email,password);
       console.log("User registered:", response.data);
       // Handle successful registration, e.g., redirect or show a message
     } catch (error) {
@@ -31,18 +31,18 @@ export const Signup = (props) => {
   };
 
   // Handle response from Google login
-  const responseGoogle = async (response) => {
-    try {
-      const res = await googleLogin({ token: response.tokenId });
-      console.log("Google login successful:", res.data);
-      // Handle Google login success
-    } catch (error) {
-      console.error(
-        "Google login error:",
-        error.response?.data || error.message
-      );
-    }
-  };
+  // const responseGoogle = async (response) => {
+  //   try {
+  //     const res = await googleLogin({ token: response.tokenId });
+  //     console.log("Google login successful:", res.data);
+  //     // Handle Google login success
+  //   } catch (error) {
+  //     console.error(
+  //       "Google login error:",
+  //       error.response?.data || error.message
+  //     );
+  //   }
+  // };
 
   return (
     <div className="auth-form-container">
@@ -66,30 +66,32 @@ export const Signup = (props) => {
           id="email"
           name="email"
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="passwordword">passwordword</label>
         <input
-          value={pass}
+          value={password}
           onChange={(e) => setPass(e.target.value)}
-          type="password"
+          type="passwordword"
           placeholder="********"
-          id="password"
-          name="password"
+          id="passwordword"
+          name="passwordword"
         />
         <button type="submit">Sign Up</button>
       </form>
 
       {/* Google Login Button for sign-up with Google */}
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId="589361707877-g76lohmtelhsp97qpo37dfc81ho3u21c.apps.googleusercontent.com"
         buttonText="Sign Up with Google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={"single_host_origin"}
-      />
+      /> */}
 
-      <button className="link-btn" onClick={() => props.onFormSwitch("login")}>
+      <button className="link-btn" onClick={() => navigate('/login')}>
         Already have an account? Login here.
       </button>
     </div>
   );
 };
+
+export default Signup
