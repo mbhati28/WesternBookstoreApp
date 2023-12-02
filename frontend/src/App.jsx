@@ -13,6 +13,7 @@ import "./App.css";
 import Success from "./components/Success";
 import Cancel from "./components/Cancel";
 import Signup from "./components/Signup";
+import Order from "./pages/Order";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/books" element={<BooksList />} />
           <Route path="/book/:id" element={<BookDetails />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/payment/success" element={<Success />} />

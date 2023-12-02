@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { addToCart } from "../services/api";
+import { AuthContext } from '../context/AuthContext';
 
 const BookItem = ({ book, onViewDetails }) => {
+  const {authData} = useContext(AuthContext);
   const navigate = useNavigate();
   const { onAdd } = useCart(); // Use the onAdd function from the cart context
 
@@ -11,15 +14,17 @@ const BookItem = ({ book, onViewDetails }) => {
   };
 
   const handleAddToCart = () => {
+    const userid = authData._id;
     onAdd(book);
+    addToCart(userid, book);
   };
 
   const priceInfo =
     book.saleInfo && book.saleInfo.listPrice
       ? `${book.saleInfo.listPrice.amount} ${book.saleInfo.listPrice.currencyCode}`
       : "Not for sale";
-    
-      const isPriceAvailable = book.saleInfo && book.saleInfo.listPrice;
+
+  const isPriceAvailable = book.saleInfo && book.saleInfo.listPrice;
 
   return (
     <div className="book-item">
@@ -37,9 +42,12 @@ const BookItem = ({ book, onViewDetails }) => {
         <p className="price">{priceInfo}</p>
       </div>
       <div className="book-info">
-        <button onClick={viewDetails} >View Details</button>
+        <button onClick={viewDetails}>View Details</button>
         <br />
-        <button onClick={handleAddToCart} disabled={!isPriceAvailable}>Add to Cart</button> {/* Use the handleAddToCart function */}
+        <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
+          Add to Cart
+        </button>{" "}
+        {/* Use the handleAddToCart function */}
       </div>
     </div>
   );

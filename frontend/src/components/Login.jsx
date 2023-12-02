@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from "../services/api";
+import { login, fetchCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
 import { GoogleLogin } from "react-google-login";
+import { useCart } from '../context/CartContext';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [error, setError] = useState('');
   const { setUserAuthInfo } = useContext(AuthContext);
+  const { setCartItems } = useCart();
   const navigate = useNavigate();
 
   // Handle submission of the normal login form
@@ -18,6 +20,12 @@ const Login = (props) => {
     try {
       const response = await login(email, password);
       setUserAuthInfo(response.data);
+      const id = response.data._id;
+      const items = await fetchCart(id);
+      if(items){
+        setCartItems(items);
+      }
+      
       navigate('/');
       console.log("Login successful:", response.data);
       // Handle login success (e.g., store token, redirect user)

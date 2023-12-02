@@ -1,36 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useCart } from "../context/CartContext"; // Adjust the path based on your project structure
 import "./CartPage.css";
 import axios from "axios";
+import {fetchCart, removeFromCart } from "../services/api";
+import { AuthContext } from '../context/AuthContext';
 
 const CartPage = () => {
   const {
     cartItems,
     setCartItems,
-    totalPrice,
-    totalQuantities,
-    setTotalPrice,
-    setTotalQuantities,
     removeItemFromCart,
   } = useCart();
-  /* eslint-disable */
+
+  const {authData} = useContext(AuthContext);
+
   useEffect(() => {
     const storedCartData = localStorage.getItem("cartData");
-    const storedPrice = localStorage.getItem("price");
-    const storedQuantity = localStorage.getItem("quantity");
-
     if (storedCartData) {
       setCartItems(JSON.parse(storedCartData));
     }
-    if (storedPrice) {
-      setTotalPrice(parseFloat(storedPrice));
-    }
-    if (storedQuantity) {
-      setTotalQuantities(parseInt(storedQuantity));
-    }
   }, []);
 
+  useEffect(() => {
+    // Define the function within useEffect
+    const loadCartData = async () => {
+      if (!authData || !authData._id) return; // Ensure authData and its _id are available
+      const cartData = await fetchCart(authData._id);
+      setCartItems(cartData);
+    };
+  
+    loadCartData(); // Now calling the function without arguments
+  }, [authData]);
+
   console.log(cartItems);
+
+  const handleRemoveFromCart = (itemId) => {
+
+    removeItemFromCart(itemId);
+    console.log("I am inside", itemId);
+    removeFromCart(authData._id, itemId);
+  };
 
   const handlePayment = async () => {
     try {
@@ -45,33 +54,42 @@ const CartPage = () => {
     }
   };
 
-  if (cartItems.length === 0) {
+  if(cartItems){
+    if (cartItems.length === 0) {
+      return <div>Your cart is empty.</div>;
+    }
+    
+  
+    return (
+      <div className="cart-container">
+        <h1>Shopping Cart</h1>
+        {cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <img
+              src={item.volumeInfo.imageLinks.thumbnail}
+              alt={item.volumeInfo.title}
+              className="cart-item-image"
+            />
+            <div className="cart-item-info">
+              <h3>{item.volumeInfo.title}</h3>
+              <p>Price: {item.saleInfo.listPrice.amount}</p>
+              <div>x{item.quantity}</div>
+              <button onClick={() => handleRemoveFromCart(item.id)}>
+                Remove from cart
+              </button>
+            </div>
+          </div>
+        ))}
+        <button onClick={handlePayment}>Proceed to Checkout</button>
+      </div>
+    );
+  }
+
+  else{
     return <div>Your cart is empty.</div>;
   }
 
-  return (
-    <div className="cart-container">
-      <h1>Shopping Cart</h1>
-      {cartItems.map((item, index) => (
-        <div key={index} className="cart-item">
-          <img
-            src={item.volumeInfo.imageLinks.thumbnail}
-            alt={item.volumeInfo.title}
-            className="cart-item-image"
-          />
-          <div className="cart-item-info">
-            <h3>{item.volumeInfo.title}</h3>
-            <p>Price: {item.saleInfo.listPrice.amount}</p>
-            <div>x{item.quantity}</div>
-            <button onClick={() => removeItemFromCart(item.id)}>
-              Remove from cart
-            </button>
-          </div>
-        </div>
-      ))}
-      <button onClick={handlePayment}>Proceed to Checkout</button>
-    </div>
-  );
+  
 };
 
 export default CartPage;

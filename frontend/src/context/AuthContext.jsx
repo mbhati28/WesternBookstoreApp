@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-
 // Creating the context
 export const AuthContext = createContext();
 
@@ -24,6 +23,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setAuthData(null);
     localStorage.removeItem('authData');
+    localStorage.removeItem('cartData');
+    window.location.reload(true);
   };
 
   return (
