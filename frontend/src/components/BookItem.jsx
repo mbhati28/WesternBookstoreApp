@@ -3,9 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { addToCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
+import { BooklistContext } from '../context/BookListContext';
 
 const BookItem = ({ book, onViewDetails }) => {
   const {authData} = useContext(AuthContext);
+  const { addToBooklist } = useContext(BooklistContext);
+
+  const handleAddToBooklist = () => {
+    addToBooklist(book);
+  };
   const navigate = useNavigate();
   const { onAdd } = useCart(); // Use the onAdd function from the cart context
 
@@ -47,6 +53,11 @@ const BookItem = ({ book, onViewDetails }) => {
         <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
           Add to Cart
         </button>{" "}
+        {authData ? (
+        <button onClick={handleAddToBooklist}>Add to Booklist</button>
+      ) : (
+        <p>Login to create and add to booklists</p> // Or any other UI element you prefer
+      )}
         {/* Use the handleAddToCart function */}
       </div>
     </div>

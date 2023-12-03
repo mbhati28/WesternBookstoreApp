@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     setAuthData(null);
     localStorage.removeItem('authData');
     localStorage.removeItem('cartData');
+    localStorage.removeItem('booklistData');
     window.location.reload(true);
   };
 

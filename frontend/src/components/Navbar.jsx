@@ -41,6 +41,9 @@ const Navbar = () => {
           <Link className="nav-item nav-link" to="/order">
             Order
           </Link>
+          <Link className="nav-item nav-link" to="/booklist">
+            Public Booklists
+          </Link>
           {!authData && (
             <>
               <Link className="nav-item nav-link" to="/login">
@@ -52,9 +55,15 @@ const Navbar = () => {
             </>
           )}
           {authData && (
-            <Link className="nav-item nav-link" onClick={handleLogout}>
-              Logout
-            </Link> // Logout button
+            <>
+              <Link className="nav-item nav-link" onClick={handleLogout}>
+                Logout
+              </Link>{" "}
+              
+              <Link className="nav-item nav-link" to="/createbooklist">
+                Create BookList
+              </Link>
+            </>
           )}
         </div>
       </div>

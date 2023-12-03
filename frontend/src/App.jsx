@@ -14,6 +14,8 @@ import Success from "./components/Success";
 import Cancel from "./components/Cancel";
 import Signup from "./components/Signup";
 import Order from "./pages/Order";
+import BookListPage from "./pages/BookListPage";
+import DisplayBooklist from "./pages/DisplayBooklist";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/order" element={<Order />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/createbooklist" element={<BookListPage />} />
+          <Route path="/booklist" element={<DisplayBooklist />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/payment/success" element={<Success />} />
           <Route path="/payment/canceled" element={<Cancel />} />
