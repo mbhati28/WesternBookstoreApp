@@ -9,6 +9,11 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isActive:{
+      type: Boolean,
+      default: true,
+      required: false
+    }
   },
   { timestamps: true }
 );
