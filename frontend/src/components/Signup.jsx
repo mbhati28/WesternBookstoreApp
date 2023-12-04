@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"; // Import axios for making HTTP requests
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { register } from "../services/api";
 import { GoogleLogin } from "react-google-login";
 // import { googleLogin } from "../services/api";
@@ -10,16 +10,25 @@ const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [name, setName] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   // Handle normal sign-up form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message
+    setError(""); // Reset error message
     try {
-      const response = await register(name,email,password);
+      const response = await register(name, email, password);
       console.log("User registered:", response.data);
+      setEmail("");
+      setPass("");
+      setName("");
+
+      // Alert the user
+      alert("You have successfully signed up!");
+
+      // Redirect to the login page
+      navigate("/login");
       // Handle successful registration, e.g., redirect or show a message
     } catch (error) {
       console.error(
@@ -87,11 +96,11 @@ const Signup = (props) => {
         cookiePolicy={"single_host_origin"}
       /> */}
 
-      <button className="link-btn" onClick={() => navigate('/login')}>
+      <button className="link-btn" onClick={() => navigate("/login")}>
         Already have an account? Login here.
       </button>
     </div>
   );
 };
 
-export default Signup
+export default Signup;

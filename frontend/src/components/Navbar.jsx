@@ -13,9 +13,9 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="">
-        Navbar
-      </a>
+      <Link className="navbar-brand" to="/">
+        Western BookStore
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -28,10 +28,7 @@ const Navbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          <Link className="nav-item nav-link" to="/">
-            Home
-          </Link>
+        <div className="navbar-nav allitems">
           <Link className="nav-item nav-link" to="/books">
             Browse Books
           </Link>
@@ -62,7 +59,10 @@ const Navbar = () => {
               <Link className="nav-item nav-link" to="/mybooklist">
                 My Booklists
               </Link>
-              <Link className="nav-item nav-link" onClick={handleLogout}>
+              <Link
+                className="nav-item nav-link"
+                onClick={handleLogout}
+              >
                 Logout
               </Link>{" "}
             </>
