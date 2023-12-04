@@ -23,7 +23,9 @@ function App() {
   return (
     <div className="container-fluid">
       <Router>
+      <div className="app-container">
         <Navbar />
+        <div className="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<BooksList />} />
@@ -39,7 +41,9 @@ function App() {
           <Route path="/payment/success" element={<Success />} />
           <Route path="/payment/canceled" element={<Cancel />} />
         </Routes>
+        </div>
         <Footer />
+        </div>
       </Router>
     </div>
   );

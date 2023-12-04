@@ -1,3 +1,18 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1; /* This will make the content area grow to push the footer down */
+  }
+
 form {
     margin-bottom: 20px;
 }
@@ -58,7 +73,6 @@ img{
     color: white;
 }
 
-/* Add this style to your BooksList.css or any relevant CSS file */
 .books-list-container {
     display: flex;
     flex-direction: column;
@@ -68,7 +82,7 @@ img{
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Add margin to separate it from the book grid */
+    margin-top: 20px; 
 }
   
 .pagination button {
@@ -81,4 +95,7 @@ img{
     background-color: #007bff;
     color: white;
 }
-  
+
+body{
+    background-color: red;
+}
