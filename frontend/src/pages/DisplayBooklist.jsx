@@ -1,30 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { getAllBooklists } from "../services/booklistapi"; // Import API call
-import BooklistModal from "../components/BooklistModal";
 import "./DisplayBooklist.css";
+import { useNavigate } from "react-router-dom";
 
 const DisplayBooklist = () => {
   const [booklists, setBooklists] = useState([]);
   const [selectedBooklist, setSelectedBooklist] = useState(null);
   const { authData } = useContext(AuthContext);
+  
 
-  const openModal = (booklist) => {
-    setSelectedBooklist(booklist);
+  const navigate = useNavigate();
+  const navigateToNewComponent = (booklistId) => {
+    navigate(`/booklistdetails/${booklistId}`);
   };
-
-  const closeModal = () => {
-    setSelectedBooklist(null);
-  };
+  
 
   useEffect(() => {
     const fetchBooklists = async () => {
       try {
         const response = await getAllBooklists();
         // Sort booklists by date (assuming each booklist has a 'createdAt' property)
-        const sortedBooklists = response.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
+        let sortedBooklists = response
+        .filter(booklist => !booklist.isPrivate) // Keep only public booklists
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Sort by date
 
         if (authData) {
           // If user is authenticated, use all booklists
@@ -55,13 +54,10 @@ const DisplayBooklist = () => {
               </p>
               <p>{booklist.description}</p>
             </div>
-            <button onClick={() => openModal(booklist)}>View Details</button>
+            <button onClick={() => navigateToNewComponent(booklist._id)}>View Details</button>
           </div>
         ))}
       </div>
-      {selectedBooklist && (
-        <BooklistModal booklist={selectedBooklist} closeModal={closeModal} />
-      )}
     </div>
   );
 };

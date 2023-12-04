@@ -16,6 +16,8 @@ import Signup from "./components/Signup";
 import Order from "./pages/Order";
 import BookListPage from "./pages/BookListPage";
 import DisplayBooklist from "./pages/DisplayBooklist";
+import ViewBooklistDetails from "./pages/ViewBooklistDetails";
+import UserBooklists from "./pages/UserBooklists";
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/createbooklist" element={<BookListPage />} />
           <Route path="/booklist" element={<DisplayBooklist />} />
+          <Route path="/booklistdetails/:booklistId" element={<ViewBooklistDetails />} />
+          <Route path="/mybooklist" element={<UserBooklists />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/payment/success" element={<Success />} />
           <Route path="/payment/canceled" element={<Cancel />} />

@@ -23,6 +23,51 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
+router.get('/:booklistId', async (req, res) => {
+  try {
+    const booklist = await Booklist.findById(req.params.booklistId);
+    if (!booklist) {
+      return res.status(404).json({ message: 'Booklist not found' });
+    }
+    res.json(booklist);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching booklist', error });
+  }
+});
+
+router.put('/:booklistId', async (req, res) => {
+  try {
+    const updatedBooklist = await Booklist.findByIdAndUpdate(
+      req.params.booklistId,
+      req.body,
+      { new: true }
+    );
+    res.json(updatedBooklist);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating booklist", error });
+  }
+});
+
+router.put('/removeBook/:booklistId', async (req, res) => {
+  const { bookId } = req.body; // ID of the book to remove
+
+  try {
+    const booklist = await Booklist.findById(req.params.booklistId);
+
+    if (!booklist) {
+      return res.status(404).send('Booklist not found');
+    }
+
+    // Remove the book from the booklist
+    booklist.books = booklist.books.filter(book => book.googleBookId !== bookId);
+
+    await booklist.save();
+    res.status(200).json(booklist);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating booklist", error });
+  }
+});
+
 // Create a booklist
 router.post('/', async (req, res) => {
   const books = req.body.books;
@@ -36,7 +81,7 @@ router.post('/', async (req, res) => {
   if (booklistsCount >= 20) {
     return res.status(400).json({ message: 'Users can create up to 20 booklists only.' });
   }
-  
+
   const booklist = new Booklist({
     userId: req.body.userId,
     name: req.body.name,

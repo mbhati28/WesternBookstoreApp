@@ -29,7 +29,7 @@ const Order = () => {
     <div>
       <h2>Your Order History</h2>
       {orders.length === 0 ? (
-        <p>Please Login to view your orders</p>
+        <p>No Order History Available</p>
       ) : (
         <div>
           {orders.map((order, index) => (

@@ -56,13 +56,15 @@ const Navbar = () => {
           )}
           {authData && (
             <>
-              <Link className="nav-item nav-link" onClick={handleLogout}>
-                Logout
-              </Link>{" "}
-              
               <Link className="nav-item nav-link" to="/createbooklist">
                 Create BookList
               </Link>
+              <Link className="nav-item nav-link" to="/mybooklist">
+                My Booklists
+              </Link>
+              <Link className="nav-item nav-link" onClick={handleLogout}>
+                Logout
+              </Link>{" "}
             </>
           )}
         </div>

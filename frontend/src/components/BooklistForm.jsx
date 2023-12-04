@@ -35,7 +35,7 @@ const BooklistForm = () => {
         setBooklistName("");
         setDescription("");
         setIsPrivate(true);
-        clearBooklist(); // Clear the current booklist after successful submission
+        clearBooklist();
         window.location.reload(true);
       } catch (error) {
         console.error("Error creating booklist:", error);

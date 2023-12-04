@@ -23,6 +23,24 @@ export const getBooklistsByUser = async (userId) => {
   }
 };
 
+export const fetchBooklistById = async (booklistId) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/${booklistId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching booklist by ID:', error);
+    throw error;
+  }
+};
+
+export const updateBooklist = async (booklistId, updatedData) => {
+  return axios.put(`${API_BASE_URL}/${booklistId}`, updatedData);
+};
+
+export const removeBookFromBooklist = async (booklistId, bookId) => {
+  return axios.put(`${API_BASE_URL}/removeBook/${booklistId}`, { bookId });
+};
+
 export const createBooklist = async (userId,name,username, books, isPrivate,description) => {
   try {
     const response = await axios.post(API_BASE_URL, { userId:userId,name:name,username:username,books: books,isPrivate:isPrivate, description:description });

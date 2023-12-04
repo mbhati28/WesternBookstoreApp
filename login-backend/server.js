@@ -6,6 +6,8 @@ const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const orderRoute = require("./routes/order");
 const booklistRoutes = require('./routes/booklist');
+const reviewRoutes = require('./routes/review');
+
 const cors = require("cors");
 // require("dotenv").config();
 app.use(express.json());
@@ -41,3 +43,4 @@ app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/order", orderRoute);
 app.use('/api/booklists', booklistRoutes);
+app.use('/api/reviews', reviewRoutes);

@@ -33,7 +33,7 @@ export const BooklistProvider = ({ children }) => {
   const removeFromBooklist = (bookId) => {
     setBooklist((current) => {
       const updatedBooklist = current.filter(
-        (book) => book.googleBookId !== bookId
+        (book) => book.id !== bookId
       );
       localStorage.setItem("booklistData", JSON.stringify(updatedBooklist));
       return updatedBooklist;
