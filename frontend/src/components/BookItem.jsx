@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext";
 import { addToCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
 import { BooklistContext } from '../context/BookListContext';
+import "./BookItem.css"
 
 const BookItem = ({ book, onViewDetails }) => {
   const {authData} = useContext(AuthContext);

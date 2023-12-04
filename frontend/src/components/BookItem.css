@@ -1,4 +1,99 @@
-.book-item {
-    position: relative;
-    /* ... other styles ... */
-}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .container-fluid {
+    padding-left: 8px; /* reduced padding */
+    padding-right: 8px; /* reduced padding */
+  }
+  
+  .book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 8px; /* reduced margin */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px; /* increased width */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  .image-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .book-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px; /* Slightly rounded corners for the image */
+  }
+  
+  .book-title h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+  }
+  
+  .book-title p {
+    margin: 4px 0;
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+  
+  .book-info button {
+    padding: 10px 20px;
+    margin-top: 8px;
+    margin-right: 4px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 20px; /* Pill-shaped buttons */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-weight: 500; /* Slightly bolder font */
+    text-transform: uppercase; /* Uppercase text for better readability */
+    letter-spacing: 0.05em; /* Spacing out letters for a cleaner look */
+  }
+  
+  .book-info button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More prominent shadow on hover */
+    transform: translateY(-2px); /* Slight raise effect */
+  }
+  
+  .book-info button:disabled {
+    background-color: #cccccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
+  .book-info p {
+    color: #777;
+    font-size: 0.9em;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .book-item {
+      width: calc(100% - 16px); /* Full width minus some padding for small screens */
+      margin: 8px; /* consistent margin */
+    }
+  
+    .container-fluid {
+      padding-left: 4px; /* even more reduced padding */
+      padding-right: 4px; /* even more reduced padding */
+    }
+  }
+  

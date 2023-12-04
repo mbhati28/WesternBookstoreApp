@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./BookFilter.css"
 
 const BookFilter = ({ onFilterChange }) => {
   const [filter, setFilter] = useState({
@@ -19,7 +20,7 @@ const BookFilter = ({ onFilterChange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-filter">
       <input
         type="text"
         name="title"
