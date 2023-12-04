@@ -1,0 +1,38 @@
+/* src/pages/CartPage.css */
+.cart-container {
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.cart-item-image {
+    width: 100px;
+    margin-right: 1rem;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h3 {
+    margin: 0;
+}
+
+.cart-item-info p {
+    margin: 0.5rem 0;
+}
+
+.cart-item-info button {
+    padding: 0.5rem 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

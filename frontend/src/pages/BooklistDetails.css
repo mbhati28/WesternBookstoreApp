@@ -1,0 +1,24 @@
+.booklist-details-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .book-details,
+  .review-section {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .review-section {
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  .review-item {
+    background: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
