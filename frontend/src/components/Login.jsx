@@ -4,6 +4,7 @@ import { login, fetchCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
 import { GoogleLogin } from "react-google-login";
 import { useCart } from '../context/CartContext';
+import "./authstyle.css"
 
 const Login = (props) => {
   const [email, setEmail] = useState("");

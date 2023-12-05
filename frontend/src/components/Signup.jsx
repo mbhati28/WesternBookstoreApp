@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { register } from "../services/api";
 import { GoogleLogin } from "react-google-login";
 // import { googleLogin } from "../services/api";
-
+import "./authstyle.css"
 const Signup = (props) => {
   // State for the normal sign-up form
   const [email, setEmail] = useState("");
@@ -75,14 +75,14 @@ const Signup = (props) => {
           id="email"
           name="email"
         />
-        <label htmlFor="passwordword">passwordword</label>
+        <label htmlFor="password">Password</label>
         <input
           value={password}
           onChange={(e) => setPass(e.target.value)}
-          type="passwordword"
+          type="password"
           placeholder="********"
-          id="passwordword"
-          name="passwordword"
+          id="password"
+          name="password"
         />
         <button type="submit">Sign Up</button>
       </form>
