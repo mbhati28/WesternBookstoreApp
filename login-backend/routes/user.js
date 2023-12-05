@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
+const User = require('../models/User');
+
 
 // Add a book to the user's cart
 router.post('/cart/:userId', async (req, res) => {
@@ -99,5 +101,47 @@ router.get('/orders/:userId', async (req, res) => {
         res.status(500).json({ message: "Error fetching orders", error });
     }
 });
+
+// Get all users
+router.get('/', async (req, res) => {
+    try {
+      const users = await User.find({}); // Fetch all users
+      res.json(users);
+    } catch (error) {
+      res.status(500).send('Server Error');
+    }
+  });
+
+  router.put('/update-active/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const { isActive } = req.body;
+  
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: { isActive: isActive } },
+        { new: true }
+      );
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating user's active status", error });
+    }
+  });
+
+  router.put('/update-admin/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const { isAdmin } = req.body;
+  
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: { isAdmin: isAdmin } },
+        { new: true }
+      );
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating user's admin status", error });
+    }
+  });
 
 module.exports = router;

@@ -76,6 +76,9 @@ router.post("/login", async (req, res) => {
       console.log("wrong user")
       return res.status(401).json("Wrong User Name");
     }
+    if (!user.isActive) {
+      return res.status(403).json("User is inactive");
+    }
 
     console.log("Hello " + user.username);
 
@@ -106,5 +109,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = router;

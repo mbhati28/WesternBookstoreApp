@@ -18,6 +18,9 @@ import BookListPage from "./pages/BookListPage";
 import DisplayBooklist from "./pages/DisplayBooklist";
 import ViewBooklistDetails from "./pages/ViewBooklistDetails";
 import UserBooklists from "./pages/UserBooklists";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminUserDashboard from "./pages/AdminUserDashboard";
+import AdminReviewDashboard from "./pages/AdminReviewDashboard";
 
 function App() {
   return (
@@ -35,8 +38,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/createbooklist" element={<BookListPage />} />
           <Route path="/booklist" element={<DisplayBooklist />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/booklistdetails/:booklistId" element={<ViewBooklistDetails />} />
           <Route path="/mybooklist" element={<UserBooklists />} />
+          <Route path="/admin/users" element={<AdminUserDashboard />} />
+          <Route path="/admin/reviews" element={<AdminReviewDashboard />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/payment/success" element={<Success />} />
           <Route path="/payment/canceled" element={<Cancel />} />

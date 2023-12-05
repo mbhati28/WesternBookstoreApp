@@ -5,6 +5,7 @@ const reviewSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   username:{type:String, required: false},
   text: { type: String, required: true },
+  isHidden: {type:Boolean, default:false},
   createdAt: { type: Date, default: Date.now }
 });
 

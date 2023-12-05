@@ -14,13 +14,36 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all reviews for a booklist
+router.get('/', async (req, res) => {
+  try {
+    const reviews = await Review.find({});
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching reviews', error });
+  }
+});
+
+router.put('/update-hidden/:reviewId', async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const { isHidden } = req.body;
+    const updatedReview = await Review.findByIdAndUpdate(reviewId, { isHidden }, { new: true });
+    res.status(200).json(updatedReview);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating review', error });
+  }
+});
+
 router.get('/booklist/:booklistId', async (req, res) => {
   try {
-    const reviews = await Review.find({ booklistId: req.params.booklistId }).populate('userId', 'username');
+    const { booklistId } = req.params;
+    const reviews = await Review.find({ 
+      booklistId: booklistId,
+      isHidden: false 
+    }).populate('userId', 'username');
     res.json(reviews);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Error fetching reviews", error });
   }
 });
 

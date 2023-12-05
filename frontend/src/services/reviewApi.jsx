@@ -23,3 +23,25 @@ export const createReview = async (reviewData) => {
         throw error;
     }
 };
+
+export const getAllReviews = async () => {
+    try {
+      const response = await axios.get(API_BASE_URL);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching all reviews:', error);
+      throw error;
+    }
+  };
+
+export const updateReviewVisibility = async (reviewId, isHidden) => {
+    try {
+        const response = await axios.put(`${API_BASE_URL}/update-hidden/${reviewId}`, {
+        isHidden: isHidden,
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error updating review visibility:', error);
+        throw error;
+    }
+};
