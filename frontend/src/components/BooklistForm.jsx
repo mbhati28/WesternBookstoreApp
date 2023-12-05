@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { BooklistContext } from "../context/BookListContext";
 import { createBooklist, getBooklistsByUser } from "../services/booklistapi"; // Import the function from api.jsx
 import { AuthContext } from "../context/AuthContext";
+import './BooklistForm.css';
 
 const BooklistForm = () => {
   const [booklistName, setBooklistName] = useState("");
@@ -48,7 +49,7 @@ const BooklistForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="booklist-form">
       <input
         type="text"
         value={booklistName}

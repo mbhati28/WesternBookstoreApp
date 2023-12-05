@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./navbar.css";
 const Navbar = () => {
   const { authData, logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -12,9 +13,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg">
       <Link className="navbar-brand" to="/">
-        Western BookStore
+      <img src="/src/assets/img_1.png" alt="Western BookStore Logo" />
       </Link>
       <button
         className="navbar-toggler"

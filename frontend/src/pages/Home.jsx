@@ -7,7 +7,7 @@ const Home = () => {
 
   if (authData && authData.username) {
     return (
-      <div className="">
+      <div className="home-container">
         <h1>Welcome, {authData.username}</h1>
         
       </div>

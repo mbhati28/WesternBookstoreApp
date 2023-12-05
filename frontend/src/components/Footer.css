@@ -1,60 +1,80 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* other styles if necessary */
+}
+
+/* Full-width footer styles */
 footer {
-    background-color: #f8f8f8;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    margin-top: auto;
-  }
-  
+  width: 100vw; /* full viewport width */
+  box-sizing: border-box; /* include padding and border in the width */
+  margin-left: calc(-50vw + 50%); /* centering if there's a default page margin */
+}
+
+.footer-container {
+  width: 100%;
+  box-sizing: border-box;
+  /* rest of your styles */
+}
+
+.footer-container {
+  background-color: #1a202c;
+  color: #f7fafc;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-container a {
+  color: #9f7aea;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.footer-container a:hover {
+  color: #d6bcfa;
+}
+
+.footer-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #cbd5e0;
+}
+
+.footer-container input[type="email"],
+.footer-container select {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  background-color: #fff;
+}
+
+.footer-container button[type="submit"] {
+  padding: 8px 15px;
+  background-color: #4a5568;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-container button[type="submit"]:hover {
+  background-color: #2d3748;
+}
+
+@media (min-width: 768px) {
   .footer-container {
+    text-align: left;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
   }
-  
-  .newsletter {
-    flex-basis: 20%;
+
+  .footer-container > div {
+    flex: 1;
+    margin: 10px;
   }
-  
-  .contact-info, .social-media, .additional-info, .currency-selector {
-    flex-basis: 15%;
-    text-align: center;
-  }
-  
-  .contact-info a, .social-media a, .additional-info a {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .currency-selector {
-    text-align: right;
-  }
-  
-  #newsletter-input {
-    padding: 5px;
-    margin-right: 5px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  /* Add responsive behavior */
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .contact-info, .social-media, .additional-info, .currency-selector {
-      flex-basis: 100%;
-      margin-top: 10px;
-    }
-  
-    .currency-selector {
-      text-align: center;
-    }
-  }
-  
+}
