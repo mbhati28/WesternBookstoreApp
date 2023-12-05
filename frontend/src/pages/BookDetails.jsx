@@ -1,14 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import "./BookDetails.css";
+import { addToCart } from "../services/api";
+import { AuthContext } from '../context/AuthContext';
+import { useCart } from "../context/CartContext";
 
 const BookDetails = () => {
   const location = useLocation();
   console.log(location);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const book = location.state.book;
+  const {authData} = useContext(AuthContext);
+  const { onAdd } = useCart();
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
+  };
+  const isPriceAvailable = book.saleInfo && book.saleInfo.listPrice;
+  const handleAddToCart = () => {
+    const userid = authData._id;
+    onAdd(book);
+    addToCart(userid, book);
+    alert("Added to Cart!");
   };
 
   return (
@@ -41,6 +53,10 @@ const BookDetails = () => {
         )}
         <button onClick={toggleDescription}>
           {showFullDescription ? "Show Less" : "Show More"}
+        </button>
+        <br />
+        <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
+          Add to Cart
         </button>
       </div>
     </div>

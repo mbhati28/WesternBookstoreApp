@@ -1,14 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { login, fetchCart } from "../services/api";
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from "../context/AuthContext";
 import { GoogleLogin } from "react-google-login";
-import { useCart } from '../context/CartContext';
+import { useCart } from "../context/CartContext";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { setUserAuthInfo } = useContext(AuthContext);
   const { setCartItems } = useCart();
   const navigate = useNavigate();
@@ -16,41 +16,66 @@ const Login = (props) => {
   // Handle submission of the normal login form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Reset error message
+    setError(""); // Reset error message
     try {
       const response = await login(email, password);
       setUserAuthInfo(response.data);
       const id = response.data._id;
       const items = await fetchCart(id);
-      if(items){
+      if (items) {
         setCartItems(items);
       }
-      
-      navigate('/');
+
+      navigate("/");
       console.log("Login successful:", response.data);
       // Handle login success (e.g., store token, redirect user)
-
     } catch (err) {
       console.error("Login error:", error.response?.data || error.message);
-      // Handle login errors (e.g., show error message)
+      alert("Login failed. Please try again.");
     }
   };
 
   // Handle response from Google login
-  const responseGoogle = async (response) => {
-    console.log("Google response object:", response); // Log the entire response object
-    try {
-      const token = response.tokenId; // Assuming the token is in the 'tokenId' field
-      console.log("Google token received:", token); // Log the token
+  // const responseGoogle = async (response) => {
+  //   console.log("Google response object:", response); // Log the entire response object
+  //   try {
+  //     const token = response.tokenId; // Assuming the token is in the 'tokenId' field
+  //     console.log("Google token received:", token); // Log the token
 
+  //     const res = await googleLogin({ token: response.tokenId });
+  //     console.log("Google login successful:", res.data);
+  //     // Handle Google login success
+  //   } catch (error) {
+  //     console.error(
+  //       "Google login error:",
+  //       error.response?.data || error.message
+  //     );
+  //   }
+  // };
+
+  const responseGoogle = async (response) => {
+    console.log("Google response object:", response);
+
+    try {
+      // Send the Google token to the server for authentication
       const res = await googleLogin({ token: response.tokenId });
+      setUserAuthInfo(res.data);
+
+      // Fetch cart items if needed
+      const id = res.data._id;
+      const items = await fetchCart(id);
+      if (items) {
+        setCartItems(items);
+      }
+
+      navigate("/");
       console.log("Google login successful:", res.data);
-      // Handle Google login success
     } catch (error) {
       console.error(
         "Google login error:",
         error.response?.data || error.message
       );
+      setError("Google login failed.");
     }
   };
 
@@ -91,10 +116,7 @@ const Login = (props) => {
         />
       </div>
 
-      <button
-        className="link-btn"
-        onClick={() => navigate('/signup')}
-      >
+      <button className="link-btn" onClick={() => navigate("/signup")}>
         Don't have an account? Register here.
       </button>
     </div>

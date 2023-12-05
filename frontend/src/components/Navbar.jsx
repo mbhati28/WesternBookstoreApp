@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import AdminButton from "./AdminButton";
 const Navbar = () => {
   const { authData, logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const Navbar = () => {
               </Link>{" "}
             </>
           )}
+          <AdminButton></AdminButton>
         </div>
       </div>
     </nav>

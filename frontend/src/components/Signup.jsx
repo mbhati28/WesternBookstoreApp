@@ -25,7 +25,7 @@ const Signup = (props) => {
       setName("");
 
       // Alert the user
-      alert("You have successfully signed up!");
+      alert("You have successfully signed up! Please Login to Continue");
 
       // Redirect to the login page
       navigate("/login");

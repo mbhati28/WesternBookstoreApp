@@ -24,6 +24,7 @@ const BookItem = ({ book, onViewDetails }) => {
     const userid = authData._id;
     onAdd(book);
     addToCart(userid, book);
+    alert("Added to Cart!");
   };
 
   const priceInfo =
