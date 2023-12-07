@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const stripe = require('stripe')('sk_test_51OFgAlBRD5NuqOJb6Cx8EVKq2SHCBbwWiSEcNhiic3bjJz38OfZ7LbLD8rLWAAFwMqzSRUcEW0FEV328OhqMWcpL00X1WdEjrS');
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 console.log('********',process.env.STRIPE_SECRET_KEY);
 router.post('/checkout', async (req, res) => {
 console.log("received", {req})

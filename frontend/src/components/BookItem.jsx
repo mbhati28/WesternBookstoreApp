@@ -14,7 +14,7 @@ const BookItem = ({ book, onViewDetails }) => {
     addToBooklist(book);
   };
   const navigate = useNavigate();
-  const { onAdd } = useCart(); // Use the onAdd function from the cart context
+  const { onAdd } = useCart();
 
   const viewDetails = () => {
     navigate(`/book/${book.id}`, { state: { book } });
@@ -52,15 +52,19 @@ const BookItem = ({ book, onViewDetails }) => {
       <div className="book-info">
         <button onClick={viewDetails}>View Details</button>
         <br />
-        <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
-          Add to Cart
-        </button>{" "}
+        {authData ? (
+               <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
+                         Add to Cart
+                       </button>
+              ) : (
+                <><br /><p>Login to add to Cart</p></>
+              )}
+
         {authData ? (
         <button onClick={handleAddToBooklist}>Add to Booklist</button>
       ) : (
-        <p>Login to create and add to booklists</p> // Or any other UI element you prefer
+        <p>Login to create and add to Booklists</p>
       )}
-        {/* Use the handleAddToCart function */}
       </div>
     </div>
   );

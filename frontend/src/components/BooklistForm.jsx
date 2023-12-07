@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { BooklistContext } from "../context/BookListContext";
-import { createBooklist, getBooklistsByUser } from "../services/booklistapi"; // Import the function from api.jsx
+import { createBooklist, getBooklistsByUser } from "../services/booklistapi";
 import { AuthContext } from "../context/AuthContext";
 import './BooklistForm.css';
 
 const BooklistForm = () => {
   const [booklistName, setBooklistName] = useState("");
-  const { clearBooklist } = useContext(BooklistContext); // Assuming you have a clearBooklist function in your context
+  const { clearBooklist } = useContext(BooklistContext);
   const { authData } = useContext(AuthContext);
   const [isPrivate, setIsPrivate] = useState(true);
   const booklist = JSON.parse(localStorage.getItem("booklistData"));
