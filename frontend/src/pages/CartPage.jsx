@@ -4,6 +4,7 @@ import "./CartPage.css";
 import axios from "axios";
 import {fetchCart, removeFromCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
+import {Link} from 'react-router-dom';
 
 const CartPage = () => {
   const {
@@ -28,7 +29,7 @@ const CartPage = () => {
       const cartData = await fetchCart(authData._id);
       setCartItems(cartData);
     };
-  
+
     loadCartData(); // Now calling the function without arguments
   }, [authData]);
 
@@ -56,10 +57,17 @@ const CartPage = () => {
 
   if(cartItems){
     if (cartItems.length === 0) {
-      return <div>Your cart is empty.</div>;
+      return (
+      <div className="empty-cart-message"><h1>Your cart is empty.</h1>
+      <br></br><br></br>
+      <Link className="browse-button" to="/books">
+                    <h3>Browse Books</h3>
+                  </Link>
+                  </div>
+      );
     }
-    
-  
+
+
     return (
       <div className="cart-container">
         <h1>Shopping Cart</h1>
@@ -80,16 +88,17 @@ const CartPage = () => {
             </div>
           </div>
         ))}
-        <button onClick={handlePayment}>Proceed to Checkout</button>
+        <button className="proceed-button" onClick={handlePayment}>Proceed to Checkout</button>
       </div>
     );
   }
 
-  else{
-    return <div>Your cart is empty.</div>;
-  }
+else {
+  return (<div className="empty-cart-message">Your cart is empty.</div>);
 
-  
+}
+
+
 };
 
 export default CartPage;
