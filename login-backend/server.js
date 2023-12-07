@@ -9,22 +9,20 @@ const booklistRoutes = require('./routes/booklist');
 const reviewRoutes = require('./routes/review');
 
 const cors = require("cors");
-// require("dotenv").config();
+require("dotenv").config();
 app.use(express.json());
 
 dotenv.config();
 app.use(cors());
 
-const uri = process.env.MONGO_URL;
+const uri = process.env.MONGO_URI;
 const pass = process.env.PASS_SEC;
 console.log(pass);
 mongoose
-  .connect(
-    "mongodb+srv://gagan:gagan@cluster0.svsii6u.mongodb.net/WesternBookStore?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Database connection successful"))
   .catch((err) => {
-    console.log("Error is ", err);
+    console.log("Database connection error:", err);
   });
 
 
