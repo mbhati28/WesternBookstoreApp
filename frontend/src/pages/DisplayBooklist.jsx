@@ -42,23 +42,21 @@ const DisplayBooklist = () => {
 
   return (
     <div>
-      <h2>Booklists</h2>
-      <div className="booklists-container">
-        {booklists.map((booklist, index) => (
-          <div key={index} className="booklist">
-            <div className="booklist-info">
-              <h3>{booklist.name}</h3>
-              <p>Created by: {booklist.username}</p>{" "}
-              <p>
-                Created on: {new Date(booklist.createdAt).toLocaleDateString()}
-              </p>
-              <p>{booklist.description}</p>
-            </div>
-            <button onClick={() => navigateToNewComponent(booklist._id)}>View Details</button>
+          <h2 className="display-booklist-title">Booklists</h2>
+          <div className="booklists-container">
+            {booklists.map((booklist, index) => (
+              <div key={index} className="list-entry">
+                <div className="list-entry-info">
+                  <h3>{booklist.name}</h3>
+                  <p>Created by: {booklist.username}</p>
+                  <p>Created on: {new Date(booklist.createdAt).toLocaleDateString()}</p>
+                  <p>{booklist.description}</p>
+                </div>
+                <button onClick={() => navigateToNewComponent(booklist._id)} className="details-button">View Details</button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
   );
 };
 

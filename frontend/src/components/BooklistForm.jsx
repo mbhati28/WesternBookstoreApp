@@ -64,12 +64,15 @@ const BooklistForm = () => {
         rows="4"
       />
       <label>
-        Private Booklist
+        Private Booklist‎ ‎ ‎
         <input
           type="checkbox"
           checked={isPrivate}
           onChange={(e) => setIsPrivate(e.target.checked)}
+          id="private-booklist-checkbox"
+          className="checkbox-custom-input"
         />
+        <span className="checkbox-custom"></span>
       </label>
       <button type="submit">Create Booklist</button>
     </form>

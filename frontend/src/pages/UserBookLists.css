@@ -1,0 +1,122 @@
+.user-booklists {
+  padding: 20px;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+.user-booklists h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.booklist-container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booklist-title {
+  color: #2a9d8f;
+  margin-bottom: 10px;
+}
+
+.listing-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.listing-item {
+  flex: 1 1 120px;
+  max-width: calc(33.333% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listing-image {
+  width: 150px; /* Fixed width for all images */
+  height: 200px; /* Fixed height for all images */
+  border-radius: 4px;
+  object-fit: cover; /* This will cover the area without changing aspect ratio, some parts of the image may be cut off */
+  margin-bottom: 10px; /* Add space between the image and the text below */
+}
+
+
+.listing-info {
+  width: 100%;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listing-title {
+  color: #264653;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 8px 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 40px; /* Set a fixed max-height */
+  min-height: 40px; /* Ensure that all titles take up the same amount of space regardless of length */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show ellipsis after 2 lines */
+  -webkit-box-orient: vertical;
+}
+
+.remove-button, .edit-button, .view-details-button, .delete-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+.remove-button {
+  background-color: #e76f51;
+}
+
+.remove-button:hover {
+  background-color: #cf5c41;
+}
+
+.edit-button {
+  background-color: #2a9d8f;
+}
+
+.edit-button:hover {
+  background-color: #21867a;
+}
+
+.view-details-button {
+  background-color: #f4a261;
+}
+
+.view-details-button:hover {
+  background-color: #e39157;
+}
+
+.delete-button {
+  background-color: #e63946;
+}
+
+.delete-button:hover {
+  background-color: #cc2f39;
+}
+
+.empty-booklists {
+  text-align: center;
+  color: #666;
+}

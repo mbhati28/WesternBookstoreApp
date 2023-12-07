@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { BooklistContext } from '../context/BookListContext';
 import { updateBooklist } from '../services/booklistapi';
-
+import './EditBooklistFormStyle.css'
 const EditBooklistForm = ({ booklist, onClose }) => {
   const [name, setName] = useState(booklist.name);
   const [isPrivate, setIsPrivate] = useState(booklist.isPrivate);
@@ -21,28 +21,33 @@ const EditBooklistForm = ({ booklist, onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="edit-form">
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Booklist Name"
         required
+        className="edit-input"
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description"
+        className="edit-textarea"
       />
       <label>
-        Private Booklist
-        <input
-          type="checkbox"
-          checked={isPrivate}
-          onChange={(e) => setIsPrivate(e.target.checked)}
-        />
-      </label>
-      <button type="submit">Update Booklist</button>
+              Private Booklist‎ ‎ ‎
+              <input
+                type="checkbox"
+                checked={isPrivate}
+                onChange={(e) => setIsPrivate(e.target.checked)}
+                id="private-booklist-checkbox"
+                className="checkbox-custom-input"
+              />
+              <span className="checkbox-custom"></span>
+            </label>
+      <button type="submit" className="edit-submit">Update Booklist</button>
     </form>
   );
 };

@@ -7,6 +7,7 @@ import {
 import { AuthContext } from "../context/AuthContext";
 import EditBooklistForm from "./EditBooklistForm";
 import { useNavigate } from "react-router-dom";
+import "./UserBooklists.css"
 
 const UserBooklists = () => {
   const [booklists, setBooklists] = useState([]);
@@ -15,13 +16,7 @@ const UserBooklists = () => {
   const navigate = useNavigate();
 
   const handleEditClick = (booklist) => {
-    if (editingBooklist && editingBooklist._id === booklist._id) {
-      // If the same booklist is clicked again, close the form
-      setEditingBooklist(null);
-    } else {
-      // Open the form for a different booklist
-      setEditingBooklist(booklist);
-    }
+    setEditingBooklist(editingBooklist && editingBooklist._id === booklist._id ? null : booklist);
   };
 
   const navigateToNewComponent = (booklistId) => {
@@ -31,12 +26,13 @@ const UserBooklists = () => {
   const handleRemoveBook = async (booklist, bookId) => {
     try {
       await removeBookFromBooklist(booklist._id, bookId);
-      // Update the state to remove the book from the booklist
-      setBooklists((booklist) => ({
-        ...booklist,
-        books: booklist.books.filter((book) => book.googleBookId !== bookId),
-      }));
-      window.location.reload(true);
+      setBooklists((currentBooklists) =>
+        currentBooklists.map((bl) =>
+          bl._id === booklist._id
+          ? { ...bl, books: bl.books.filter((book) => book.googleBookId !== bookId) }
+          : bl
+        )
+      );
     } catch (error) {
       console.error("Error removing book from booklist:", error);
     }
@@ -53,60 +49,58 @@ const UserBooklists = () => {
   const handleDelete = (booklistId) => {
     deleteBooklist(booklistId)
       .then(() => {
-        setBooklists(
-          booklists.filter((booklist) => booklist._id !== booklistId)
-        );
+        setBooklists((currentBooklists) => currentBooklists.filter((booklist) => booklist._id !== booklistId));
       })
       .catch((error) => console.error(error));
   };
 
-  if (!booklists || booklists.length === 0) {
-    return (
-      <div>
-        <h2>Your Booklists</h2>
-        <p>No booklists to display</p>
-      </div>
-    );
-  }
-  console.log(booklists);
   return (
-    <div>
+    <div className="user-booklists">
       <h2>Your Booklists</h2>
-      {booklists.map((booklist) => (
-        <div key={booklist._id}>
-          <h3>{booklist.name}</h3>
-          {booklists.map((booklist) => (
-            <div key={booklist._id}>
+      {booklists.length === 0 ? (
+        <div className="empty-booklists">
+          <p>No booklists to display</p>
+        </div>
+      ) : (
+        booklists.map((booklist) => (
+          <div key={booklist._id} className="booklist-container">
+            <h3 className="booklist-title">{booklist.name}</h3>
+            <div className="listing-row">
               {booklist.books.map((book, index) => (
-                <div key={index}>
-                  {/* Book details */}
-                  <p>{book.title}</p>
-                  <img src={book.thumbnail} alt="" />
-                  <button
-                    onClick={() =>
-                      handleRemoveBook(booklist, book.googleBookId)
-                    }
-                  >
-                    Remove
-                  </button>
+                <div key={index} className="listing-item">
+                  <img src={book.thumbnail} alt={book.title} className="listing-image" />
+                  <div className="listing-info">
+                    <p className="listing-title">{book.title}</p>
+                    <button
+                      onClick={() => handleRemoveBook(booklist, book.googleBookId)}
+                      className="remove-button"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               ))}
-              <button onClick={() => handleEditClick(booklist)}>Edit</button>
-              <button onClick={() => navigateToNewComponent(booklist._id)}>
+            </div>
+            <div className="booklist-actions">
+              <button onClick={() => handleEditClick(booklist)} className="edit-button">
+                Edit
+              </button>
+              <button onClick={() => navigateToNewComponent(booklist._id)} className="view-details-button">
                 View Details
               </button>
+              <button onClick={() => handleDelete(booklist._id)} className="delete-button">
+                Delete
+              </button>
             </div>
-          ))}
-
-          {editingBooklist && (
-            <EditBooklistForm
-              booklist={editingBooklist}
-              onClose={() => setEditingBooklist(null)}
-            />
-          )}
-          <button onClick={() => handleDelete(booklist._id)}>Delete</button>
-        </div>
-      ))}
+            {editingBooklist && editingBooklist._id === booklist._id && (
+              <EditBooklistForm
+                booklist={editingBooklist}
+                onClose={() => setEditingBooklist(null)}
+              />
+            )}
+          </div>
+        ))
+      )}
     </div>
   );
 };
