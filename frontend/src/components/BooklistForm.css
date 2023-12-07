@@ -48,15 +48,14 @@
 /* Styles for the checkbox container */
 label {
   display: flex;
-  align-items: center; /* Ensure the checkbox and label text are aligned on the same line */
-  font-size: 20px; /* Adjust the font size as necessary */
-  color: #333; /* Adjust the text color as necessary */
-  gap: 8px; /* Space between the checkbox and the label text */
+  align-items: center;
+  font-size: 20px;
+  color: #333;
+  gap: 8px;
   cursor: pointer;
-  user-select: none; /* Prevent text selection */
+  user-select: none;
 }
 
-/* Hide the default checkbox but keep it accessible for screen readers */
 label input[type="checkbox"] {
   opacity: 0;
   width: 0;
@@ -65,34 +64,31 @@ label input[type="checkbox"] {
   position: absolute;
 }
 
-/* Create a custom box */
 label .checkbox-custom {
-  min-width: 20px; /* Width of the custom checkbox */
-  height: 20px; /* Height of the custom checkbox */
+  min-width: 20px;
+  height: 20px;
   background: white;
-  border: 2px solid #9b59b6; /* Border color of the custom checkbox */
-  border-radius: 3px; /* Rounded corners of the custom checkbox */
+  border: 2px solid #9b59b6;
+  border-radius: 3px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0; /* Prevent the checkbox from shrinking */
+  flex-shrink: 0;
 }
 
-/* Checkmark styles - using a custom SVG or font icon for precise control */
 label .checkbox-custom::after {
-  content: ''; /* We'll use a background image for the checkmark */
+  content: '';
   background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16" fill="%239b59b6" xmlns="http://www.w3.org/2000/svg"><path d="M6.00049 12.172L2.82849 9.00002L1.41449 10.414L6.00049 15L15 6.00002L13.586 4.58602L6.00049 12.172Z"/></svg>');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
-  width: 16px; /* Width of the checkmark */
-  height: 16px; /* Height of the checkmark */
+  width: 16px;
+  height: 16px;
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
 }
 
-/* Show the checkmark when the hidden checkbox is checked */
 label input[type="checkbox"]:checked + .checkbox-custom::after {
   opacity: 1;
 }

@@ -2,7 +2,7 @@
   text-align: center;
   color: #333;
   margin-bottom: 20px;
-  font-size: 24px; /* Adjust font-size as needed */
+  font-size: 24px;
 }
 
 .booklists-container {
@@ -15,14 +15,14 @@
 .list-entry {
   display: flex;
   flex-direction: column;
-  align-items: start; /* Aligns items to the start of the flex container */
+  align-items: start;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  min-height: 200px; /* Adjust as needed to fit the content */
+  min-height: 200px;
 }
 
 
@@ -31,7 +31,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 100%; /* Forces the text to only take up the space available in the container */
+  width: 100%;
 }
 
 .list-entry:hover {

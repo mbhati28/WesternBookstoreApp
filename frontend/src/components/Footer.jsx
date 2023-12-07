@@ -11,14 +11,14 @@ const Footer = () => {
               <button type="submit">Subscribe</button>
             </div>
             <div className="contact-info">
-              <a href="tel:519-494-6645">Call Us: 519-494-6645</a>
-              <a href="mailto:books@brownanddickson.com">Email Us</a>
+              <a href="tel:519-494-6645">Call Us: 123-456-7890</a>
+              <a href="mailto:mbhati28@uwo.ca">Email Us</a>
             </div>
             <div className="social-media">
-              <a href="your-facebook-url">Facebook</a>
-              <a href="your-instagram-url">Instagram</a>
-              <a href="your-tiktok-url">TikTok</a>
-              <a href="your-twitter-url">Twitter</a>
+              <a href="https://www.facebook.com/">Facebook</a>
+              <a href="https://www.instagram.com/">Instagram</a>
+              <a href="https://www.tiktok.com/">TikTok</a>
+              <a href="https://twitter.com/home?lang=en">X</a>
             </div>
             <div className="additional-info">
               <a href="#">Contact Us</a>
@@ -30,7 +30,6 @@ const Footer = () => {
               <label htmlFor="currency">Currency:</label>
               <select id="currency">
                 <option value="CAD">Canada (CAD $)</option>
-                {/* More currency options can be added here */}
               </select>
             </div>
           </div>

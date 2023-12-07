@@ -53,7 +53,7 @@
 
 .review-form-container {
   max-width: 500px;
-  margin: 20px auto; /* Centers the form and adds margin above and below */
+  margin: 20px auto;
   padding: 20px;
   background-color: #f3f3f3;
   border-radius: 8px;
@@ -62,30 +62,30 @@
 
 .review-form-container input[type="text"],
 .review-form-container textarea {
-  width: calc(100% - 20px); /* Subtract padding for true 100% width */
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box; /* Ensures padding doesn't add to the width */
+  box-sizing: border-box;
 }
 
 .review-form-container textarea {
-  height: 100px; /* Fixed height, can be adjusted */
-  resize: vertical; /* Allows the user to resize vertically */
+  height: 100px;
+  resize: vertical;
 }
 
 .review-form-container button {
-  width: auto; /* Allows the button to only be as wide as its text content */
-  padding: 10px 20px; /* More horizontal padding for a better appearance */
+  width: auto;
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   background-color: #007bff;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  display: block; /* Forces new line */
-  margin: 10px auto 0; /* Margin top and auto margin for centering horizontally */
+  display: block;
+  margin: 10px auto 0;
 }
 
 .review-form-container button:hover {
@@ -93,7 +93,7 @@
 }
 
 
-/* Additional style for when there's no reviews */
+
 .no-reviews {
   text-align: center;
   padding: 20px;

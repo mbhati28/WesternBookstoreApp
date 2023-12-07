@@ -16,10 +16,8 @@ const Success = () => {
       localStorage.removeItem("cartData");
       console.log('Cart cleared:', clearCartResponse.data);
   
-      // Further actions like redirecting the user or showing a success message
     } catch (error) {
       console.error('Error in processing order and clearing cart:', error);
-      // Handle errors (e.g., show error message to the user)
     }
   };
 

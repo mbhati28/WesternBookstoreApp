@@ -1,7 +1,7 @@
 /* Login page styles */
 .auth-form-container {
   max-width: 400px;
-  margin: 100px auto; /* Center vertically and horizontally with space from top */
+  margin: 100px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
