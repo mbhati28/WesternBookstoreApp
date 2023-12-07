@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchAllUsers, updateUserAdminStatus, updateUserActiveStatus} from '../services/userapi';
 import AdminUserDashboard from "./AdminUserDashboard";
 import { useNavigate } from 'react-router-dom';
-
+import "./adminstyle.css"
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
@@ -29,11 +29,13 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <button onClick={() => handleClick()}>Users</button>
-      <button onClick={() => handleReviewClick()}>Reviews</button>
-    </div>
+    <div className="admin-dashboard-container">
+          <h1>Admin Dashboard</h1>
+          <div className="button-container">
+            <button onClick={() => handleClick()}>Users</button>
+            <button onClick={() => handleReviewClick()}>Reviews</button>
+          </div>
+        </div>
   );
 };
 

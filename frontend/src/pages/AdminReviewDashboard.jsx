@@ -28,19 +28,19 @@ const handleToggleVisibility = async (reviewId, currentVisibility) => {
   };
 
   return (
-    <div>
-      <h2>Reviews Management</h2>
-      {reviews.map((review, index) => (
-        <div key={index} className="review">
-          <p>{review.text}</p>
-          <p>By: {review.username}</p>
-          <p>On: {new Date(review.createdAt).toLocaleDateString()}</p>
-          <button onClick={() => handleToggleVisibility(review._id, review.isHidden)}>
-            {review.isHidden ? 'Unhide' : 'Hide'}
-          </button>
+    <div className="review-dashboard-container">
+          <h2>Reviews Management</h2>
+          {reviews.map((review, index) => (
+            <div key={index} className="review">
+              <p>{review.text}</p>
+              <p>By: {review.username}</p>
+              <p>On: {new Date(review.createdAt).toLocaleDateString()}</p>
+              <button onClick={() => handleToggleVisibility(review._id, review.isHidden)}>
+                {review.isHidden ? 'Unhide' : 'Hide'}
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
   );
 
 }

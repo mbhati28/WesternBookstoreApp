@@ -23,21 +23,21 @@ const AdminUserDashboard = () => {
   };
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      {/* List users with toggle buttons */}
-      {users.map((user) => (
-        <div key={user._id}>
-          <span>{user.username}</span>
-          <button onClick={() => updateUserActiveStatus(user._id, user.isActive)}>
-            {user.isActive ? 'Deactivate' : 'Activate'}
-          </button>
-          <button onClick={() => updateUserAdminStatus(user._id, user.isAdmin)}>
-            {user.isAdmin ? 'Revoke Admin' : 'Grant Admin'}
-          </button>
+     <div className="admin-user-dashboard-container">
+          <h1>Admin Dashboard</h1>
+          {/* List users with toggle buttons */}
+          {users.map((user) => (
+            <div key={user._id} className="user">
+              <span>{user.username}</span>
+              <button onClick={() => updateUserActiveStatus(user._id, user.isActive)}>
+                {user.isActive ? 'Deactivate' : 'Activate'}
+              </button>
+              <button onClick={() => updateUserAdminStatus(user._id, user.isAdmin)}>
+                {user.isAdmin ? 'Revoke Admin' : 'Grant Admin'}
+              </button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
   );
 };
 
