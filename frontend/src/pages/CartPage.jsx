@@ -94,7 +94,12 @@ const CartPage = () => {
   }
 
 else {
-  return (<div className="empty-cart-message">Your cart is empty.</div>);
+  return (<div className="empty-cart-message"><h1>Your cart is empty.</h1>
+  <br></br><br></br>
+  <Link className="browse-button" to="/books">
+                <h3>Browse Books</h3>
+              </Link>
+              </div>);
 
 }
 
