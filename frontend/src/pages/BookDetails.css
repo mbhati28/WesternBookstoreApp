@@ -1,61 +1,108 @@
 .book-details {
-    display: flex;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 20px;
-    padding: 20px;
-}
-
-.price{
-    font-size: x-large;
-    font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  max-width: 1500px; /* Adjust the width as needed */
+  margin: 20px 0; /* Top and bottom margin */
+  padding: 20px;
+  gap: 10px; /* Maintain the gap between image and text */
 }
 
 .book-details .col-lg-3 {
-    flex: 0 0 auto; /* Bootstrap's col-lg-3 class */
-    max-width: 25%; /* Bootstrap's col-lg-3 class */
-}
-
-.book-details img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px; /* Optional: for rounded corners */
+  flex: 0 0 35%; /* Increase the flex-basis percentage for a larger image */
+  max-width: 35%; /* You can also set a max-width here if needed */
 }
 
 .book-details .col-lg-10 {
-    flex: 0 0 auto; /* Bootstrap's col-lg-10 class */
-    max-width: 83.333333%; /* Bootstrap's col-lg-10 class */
+  flex: 0 0 65%; /* Decrease the flex-basis percentage for text accordingly */
+  max-width: 65%;
+}
+
+.book-details img {
+  width: 100%; /* Make the image take up the full width of its container */
+  height: auto; /* Keep the height auto to maintain aspect ratio */
+  border-radius: 4px;
 }
 
 .book-details h2 {
-    margin-top: 0;
+  color: #333;
+  font-size: 24px; /* Adjust the size as needed */
+  margin: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
-    .book-details {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .book-details .col-lg-3,
-    .book-details .col-lg-10 {
-        max-width: 100%;
-    }
+.book-details p {
+  color: #555;
+  line-height: 1.6;
+  margin: 10px 0;
 }
 
-.description {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.book-details .price {
+  color: #28a745;
+  font-weight: 700;
+  font-size: 18px; /* Adjust the size as needed */
 }
 
-.description.expanded {
-    display: block;
-    -webkit-line-clamp: none;
-    overflow: visible;
+.book-details .description {
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  max-height: 72px; /* Adjust based on your font-size and line-height */
+  overflow: hidden;
 }
 
+.book-details .description.expanded {
+  max-height: none;
+}
+
+button {
+  background-color: #6c5ce7; /* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Adjust the font size as needed */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    text-align: center; /* Center the text inside the button */
+    display: inline-block; /* Allows setting width and centering if needed */
+    text-decoration: none;
+}
+
+button:hover {
+  background-color: #00376b;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Additional styles for 'Show More/Less' button */
+button.toggle-description {
+  background: none;
+  color: #0056b3;
+  border: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+button.toggle-description:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .book-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-details .col-lg-3,
+  .book-details .col-lg-10 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .book-details img {
+    max-width: 80%; /* Adjust this value to set how large the image should be on smaller screens */
+    max-height: none;
+  }
+}

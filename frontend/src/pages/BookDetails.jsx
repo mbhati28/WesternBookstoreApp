@@ -4,6 +4,7 @@ import "./BookDetails.css";
 import { addToCart } from "../services/api";
 import { AuthContext } from '../context/AuthContext';
 import { useCart } from "../context/CartContext";
+import {Link} from 'react-router-dom';
 
 const BookDetails = () => {
   const location = useLocation();
@@ -54,10 +55,13 @@ const BookDetails = () => {
         <button onClick={toggleDescription}>
           {showFullDescription ? "Show Less" : "Show More"}
         </button>
-        <br />
+        <br /><br />
         <button onClick={handleAddToCart} disabled={!isPriceAvailable}>
           Add to Cart
-        </button>
+        </button><br /><br />
+        <Link className="home-button" to="/books">
+                                  Browse Books
+                                </Link>
       </div>
     </div>
   );
