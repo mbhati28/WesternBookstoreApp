@@ -1,0 +1,55 @@
+/* Success.css */
+
+.order-success {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.order-success h1 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.order-details {
+  text-align: left;
+}
+
+.order-details h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.order-item {
+  background-color: #ffffff;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.order-item div {
+  margin: 0.3rem 0;
+}
+
+.order-total {
+  font-weight: bold;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px dashed #dddddd;
+}
+
+.empty-cart {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #999;
+}
