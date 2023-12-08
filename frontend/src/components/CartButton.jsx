@@ -1,5 +1,3 @@
-// frontend/src/components/CartButton.jsx
-
 import React from 'react';
 import { useCart } from '/src/context/CartContext.jsx';
 import { useNavigate } from 'react-router-dom';

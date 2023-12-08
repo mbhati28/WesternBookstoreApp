@@ -35,7 +35,6 @@ const Signup = (props) => {
         "Registration error:",
         error.response?.data || error.message
       );
-      // Handle registration errors, e.g., show an error message
     }
   };
 

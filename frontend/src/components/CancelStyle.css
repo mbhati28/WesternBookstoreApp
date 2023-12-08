@@ -29,13 +29,12 @@
 }
 
 .cancel-button:hover,
-.cancel-button:focus { /* Focus for accessibility */
+.cancel-button:focus {
   background-color: #0056b3;
   transform: translateY(-2px);
-  outline: none; /* Optional: removes the outline to avoid a box around the button when clicked */
+  outline: none;
 }
 
-/* Responsive design adjustments */
 @media (max-width: 768px) {
   .cancel-button {
     padding: 8px 20px;
@@ -43,6 +42,6 @@
   }
 
   .cancel-message {
-    padding: 0 10px; /* Adding some padding on smaller screens */
+    padding: 0 10px;
   }
 }

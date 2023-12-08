@@ -50,13 +50,11 @@
   border-color: #ccc;
 }
 
-/* Style for the current page number if needed */
 .pagination .current-page {
   font-weight: bold;
   color: #2c3e50;
 }
 
-/* Style for page number buttons if needed */
 .pagination .page-number {
   background-color: #fff;
   border: 1px solid #ddd;

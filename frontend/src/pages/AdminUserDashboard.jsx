@@ -5,7 +5,6 @@ const AdminUserDashboard = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // Fetch users from the backend
     fetchAllUsers()
     .then(users => {
         console.log(users);
@@ -18,14 +17,12 @@ const AdminUserDashboard = () => {
   }, []);
 
   const toggleUserStatus = async (userId, type) => {
-    // API call to update user status
     console.log(user);
   };
 
   return (
      <div className="admin-user-dashboard-container">
           <h1>Admin Dashboard</h1>
-          {/* List users with toggle buttons */}
           {users.map((user) => (
             <div key={user._id} className="user">
               <span>{user.username}</span>

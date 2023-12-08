@@ -1,12 +1,11 @@
-/* Style the form itself */
 .form-filter {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px; /* Spacing between the form and the book items */
+    margin-bottom: 20px; /
     padding: 10px;
-    background-color: #f7f7f7; /* Light grey background */
+    background-color: #f7f7f7;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -16,18 +15,16 @@
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px; /* Larger font size for better readability */
-    width: 180px; /* Fixed width, can be adjusted as needed */
+    font-size: 16px;
+    width: 180px;
   }
   
-  /* Adjust the size of the input fields on smaller screens */
   @media (max-width: 768px) {
     .form-filter input[type="text"] {
-      width: 100%; /* Full width on smaller screens */
+      width: 100%;
     }
   }
   
-  /* Style the submit button */
   .form-filter button {
     padding: 10px 20px;
     border: none;
@@ -36,17 +33,16 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 4px;
-    font-size: 16px; /* Larger font size for better readability */
+    font-size: 16px;
   }
   
   .form-filter button:hover {
     background-color: #003d82;
   }
   
-  /* Ensure the button doesn't break into the next line on small screens */
   .form-filter div {
     display: flex;
     width: 100%;
-    justify-content: center; /* Centering the button */
+    justify-content: center;
   }
   

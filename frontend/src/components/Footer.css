@@ -1,20 +1,19 @@
 html, body {
   margin: 0;
   padding: 0;
-  /* other styles if necessary */
+
 }
 
-/* Full-width footer styles */
+
 footer {
-  width: 100vw; /* full viewport width */
-  box-sizing: border-box; /* include padding and border in the width */
-  margin-left: calc(-50vw + 50%); /* centering if there's a default page margin */
+  width: 100vw;
+  box-sizing: border-box;
+  margin-left: calc(-50vw + 50%);
 }
 
 .footer-container {
   width: 100%;
   box-sizing: border-box;
-  /* rest of your styles */
 }
 
 .footer-container {

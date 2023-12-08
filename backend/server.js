@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.json()); // Enable JSON body parsing
 
-// Use your Stripe routes
+//Stripe routes
 app.use('/api', stripeRoutes);
 
 const PORT = process.env.PORT || 5555;

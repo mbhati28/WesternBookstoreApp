@@ -7,7 +7,7 @@ import "./BooksList.css";
 const BooksList = () => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentQuery, setCurrentQuery] = useState("gre"); // For storing the current query
+  const [currentQuery, setCurrentQuery] = useState("gre");
   const [totalPages, setTotalPages] = useState(1);
   const maxResults = 12;
   const maxPageNumbers = 10;
@@ -77,12 +77,10 @@ const BooksList = () => {
   };
 
   const handleViewDetails = (book) => {
-    // Placeholder for view details logic
     console.log("Viewing details for:", book.volumeInfo.title);
   };
 
   const handleAddToCart = (book) => {
-    // Placeholder for add to cart logic
     console.log("Adding to cart:", book.volumeInfo.title);
   };
 

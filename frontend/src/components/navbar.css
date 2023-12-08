@@ -3,17 +3,15 @@ body {
   padding: 0;
 }
 
-/* Full-width Navbar */
 .navbar {
-  background-color: #8254f9; /* Dark background to match footer */
+  background-color: #8254f9;
   color: #f7fafc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1rem;
-    width: 100vw; /* full viewport width */
-    box-sizing: border-box; /* include padding and border in the width */
-    margin-left: calc(-50vw + 50%); /* centering if there's a default page margin */
+    width: 100vw;
+    box-sizing: border-box;
+    margin-left: calc(-50vw + 50%);
 }
-/* Set the container width to 100% of viewport width */
 .navbar .container {
   width: 100%;
   padding-left: 0;
@@ -22,64 +20,57 @@ body {
   margin-right: 0;
 }
 .navbar .navbar-brand {
-  max-width: 500px; /* Adjust the max width as needed */
+  max-width: 500px;
   display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .navbar .navbar-brand img {
-  max-width: 90%; /* Make the image width 100% of its container */
-  height: auto;   /* Automatically adjust the height to maintain aspect ratio */
+  max-width: 90%;
+  height: auto;
 }
 
 .navbar .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.navbar .navbar-toggler-icon {
-  /* Add styles if you have a custom icon */
-}
+
 
 .navbar .navbar-nav,
 .navbar .allitems {
   display: flex;
-  align-items: center; /* Align items vertically center */
+  align-items: center;
 }
 
 .navbar .collapse.navbar-collapse {
-  justify-content: flex-end; /* Align items to the right */
+  justify-content: flex-end;
 }
 
 .navbar .nav-item {
-  margin: 0 0.75rem; /* Uniform spacing around nav links */
+  margin: 0 0.75rem;
 }
 
 .navbar .nav-link {
-  color: #f7fafc; /* Light color for contrast against dark background */
-  text-decoration: none; /* Remove underline from links */
+  color: #f7fafc;
+  text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
 .navbar .nav-link:hover {
-  color: #d6bcfa; /* Lighter shade for hover, similar to footer */
+  color: #d6bcfa;
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .navbar .navbar-nav {
-    flex-direction: column; /* Stack the nav items vertically */
+    flex-direction: column;
   }
 
   .navbar .nav-item {
-    margin: 0.5rem 0; /* More vertical space between items */
+    margin: 0.5rem 0;
   }
 
   .navbar .navbar-toggler {
     border: none;
   }
-
-  .navbar .navbar-toggler-icon {
-    /* Additional styles for mobile toggle icon, if necessary */
-  }
-}
+ }
